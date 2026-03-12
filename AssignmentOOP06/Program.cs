@@ -89,3 +89,69 @@ public class Toaster : Appliance
 // Answer: If you call Status() on a Toaster object, it will return "Standby".
 //         This is because the Toaster class does not override the Status() method, so it uses the default implementation provided by the Appliance class, which returns "Standby".
 #endregion
+
+#region Qusetion04:
+/* Q4: Look at the following code and answer the questions below:
+
+// File: Calculator.cs
+public partial class Calculator
+{
+    public double LastResult { get; private set; }
+    partial void OnCalculated(double result);
+
+    public double Add(double a, double b)
+    {
+        LastResult = a + b;
+        OnCalculated(LastResult);
+        return LastResult;
+    }
+}
+
+// File: Calculator.Logging.cs
+public partial class Calculator
+{
+    partial void OnCalculated(double result)
+    {
+        Console.WriteLine($"Log: result = {result}");
+    }
+}
+
+// File: DoubleExtensions.cs
+public static class DoubleExtensions
+{
+    public static string ToCurrency(this double value)
+        => $"${value:F2}";
+}*/
+
+// a) What is a partial class? Why would a developer split Calculator into two files?
+
+//Answer: A partial class is a class that can be split across multiple files.
+//        Each part of the class must be marked with the 'partial' keyword, and when compiled, all parts are combined into a single class.
+//        A developer might split the Calculator class into two files to separate concerns and improve code organization.
+//        For example, one file (Calculator.cs) contains the core functionality of the calculator, while another file (Calculator.Logging.cs) contains logging-related code.
+
+
+// b) What is a partial method? What happens if the OnCalculated() implementation in Calculator.Logging.cs is deleted — will the code still compile? Why?
+
+// Answer: A partial method is a method that is declared in one part of a partial class and can be implemented in another part.
+//         If the implementation is not provided, the method call is removed at compile time, and the code will still compile without any errors.
+//         In this case, if the OnCalculated() implementation in Calculator.Logging.cs is deleted, the code will still compile because the call to OnCalculated() will simply be ignored, and there will be no runtime error.
+
+
+// c) What is an extension method? What are the three rules for writing one?
+
+// Answer: An extension method is a static method that allows you to add new methods to existing types without modifying the original type or creating a new derived type.
+//          The three rules for writing an extension method are:
+//          1. The method must be defined in a static class.
+//          2. The method itself must be static.
+//          3. The first parameter of the method must specify the type it extends, and it must be preceded by the 'this' keyword.
+
+
+// d) What will the following code print?
+/* Calculator calc = new Calculator();
+double result = calc.Add(19.5, 0.5);
+Console.WriteLine(result.ToCurrency());*/
+
+// Answer: The code will print: Log:   result = 20
+//                                     $20.00
+#endregion
