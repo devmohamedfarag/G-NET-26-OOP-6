@@ -39,3 +39,53 @@
 //       An abstract class is used when there is a clear hierarchical relationship and shared code among classes,
 //         while an interface is ideal for defining capabilities that can be implemented by unrelated classes.
 #endregion
+
+#region Qusetiom03:
+/*  Q3 : Look at the following code and answer the questions below:
+
+public abstract class Appliance
+{
+    public string Brand { get; set; }
+
+    protected Appliance(string brand) { Brand = brand; }
+
+    public abstract double PowerConsumption();
+
+    public virtual string Status() => "Standby";
+
+    public string Label() => $"{Brand} - {PowerConsumption()}W";
+}
+
+public class WashingMachine : Appliance
+{
+    public WashingMachine(string brand) : base(brand) { }
+    public override double PowerConsumption() => 500;
+    public override string Status() => "Washing";
+}
+
+public class Toaster : Appliance
+{
+    public Toaster(string brand) : base(brand) { }
+    public override double PowerConsumption() => 800;
+}*/
+
+// a) Can you write: Appliance a = new Appliance("LG"); ? Why or why not?
+
+// Asnwer: No, you cannot instantiate an abstract class directly.
+//         Abstract classes are meant to be inherited by other classes and cannot be instantiated on their own.
+//         They serve as a blueprint for other classes to implement the abstract methods defined within them.
+
+
+// b) What is the difference between the three methods: PowerConsumption(), Status(), and Label()? Why did the designer make each one abstract, virtual, or concrete?
+
+// Answer: PowerConsumption() is an abstract method, meaning that it must be implemented by any non-abstract class that inherits from Appliance. It defines a contract for calculating power consumption, but the specific implementation is left to the subclasses.
+//         Status() is a virtual method, which provides a default implementation ("Standby") that can be overridden by subclasses if they need to provide a different status. This allows for flexibility while still providing a common behavior.
+//        Label() is a concrete method, which means it has a complete implementation and cannot be overridden. It uses the Brand property and the PowerConsumption() method to generate a label for the appliance.
+//        The designer likely made this method concrete because it provides a common functionality that all appliances can use without needing to change it.
+
+
+// c) If you call Status() on a Toaster object, what will it return? Why?
+
+// Answer: If you call Status() on a Toaster object, it will return "Standby".
+//         This is because the Toaster class does not override the Status() method, so it uses the default implementation provided by the Appliance class, which returns "Standby".
+#endregion
