@@ -28,3 +28,14 @@
  */
 
 #endregion
+
+#region Qusetion02:
+// Q2: What is the difference between an abstract class and an interface? Give at least four differences. When would you choose one over the other?
+
+// Answer: An abstract class cannot be instantiated and can contain both abstract and concrete methods, allowing code reuse.
+//         An interface, acting as a strict contract, primarily defines abstract method signatures that implementing classes must define, supporting multiple inheritance.
+//         An abstract class can have fields and constructors, while an interface cannot have fields and only allows for default implementations in C# 8.0 and later.
+//
+//       An abstract class is used when there is a clear hierarchical relationship and shared code among classes,
+//         while an interface is ideal for defining capabilities that can be implemented by unrelated classes.
+#endregion
